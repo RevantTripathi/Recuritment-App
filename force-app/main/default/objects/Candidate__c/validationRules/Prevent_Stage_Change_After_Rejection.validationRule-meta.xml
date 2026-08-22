@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_Stage_Change_After_Rejection</fullName>
+    <active>true</active>
+    <description>This rule will stop the stage from being after the candidate is rejected</description>
+    <errorConditionFormula>AND( ISPICKVAL(PRIORVALUE(Outcome__c), &quot;Rejected&quot;), ISCHANGED(Stage__c) )</errorConditionFormula>
+    <errorMessage>The Candidate is already &quot;Rejected&quot;</errorMessage>
+</ValidationRule>
