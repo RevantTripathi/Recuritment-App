@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_Rejection_At_Applied_Stage</fullName>
+    <active>true</active>
+    <description>This will prevent marking the candidate as &quot;Rejected&quot; at the &quot;Applied&quot; stage</description>
+    <errorConditionFormula>AND(
+  OR(
+    ISNEW(),
+    ISPICKVAL(PRIORVALUE(Stage__c), &quot;Applied&quot;)
+  ),
+  NOT(ISPICKVAL(Outcome__c, &quot;Pending&quot;))
+)</errorConditionFormula>
+    <errorMessage>Outcome cannot be marked as &quot;Rejected&quot; at the &quot;Applied&quot; Stage.</errorMessage>
+</ValidationRule>
