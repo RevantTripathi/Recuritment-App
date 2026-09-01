@@ -6,10 +6,12 @@ public virtual class TriggerHandler {
         if(Trigger.isBefore){
             if(Trigger.isInsert) beforeInsert(Trigger.new);
             if(Trigger.isUpdate) beforeUpdate(Trigger.new, Trigger.oldMap);
+            if (Trigger.isDelete) beforeDelete(Trigger.old, Trigger.oldMap);
         }else{
             if(Trigger.isInsert) afterInsert(Trigger.new, Trigger.newMap);
             if(Trigger.isUpdate) afterUpdate(Trigger.new, Trigger.newMap, Trigger.oldMap);
-            
+            if (Trigger.isDelete) afterDelete(Trigger.old, Trigger.oldMap);
+            if (Trigger.isUndelete) afterUndelete(Trigger.new, Trigger.newMap);
         }
     }
 
