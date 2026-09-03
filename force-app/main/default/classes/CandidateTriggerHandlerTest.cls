@@ -30,4 +30,19 @@ public class CandidateTriggerHandlerTest {
         system.assertEquals(1, interview.size(), 'Expected only one Interview Creation');
 
     }
+
+    @isTest
+    static void testNoDuplicateInterviewOnResave(){
+        Candidate__c cand = [Select Id,Stage__c from Candidate__c Limit 1]; 
+        
+        Test.startTest();
+        cand.Stage__c = 'Interview'; 
+        update cand;                                       
+        Test.stopTest();
+
+        cand.Email__c='Update@gmail.com';
+        update cand;
+        List<Interview__c> interview = [Select Id from Interview__c where Candidate__c =:cand.Id];
+        system.assertEquals(1, interview.size(), 'Expected only one Interview Creation');
+    }
 }

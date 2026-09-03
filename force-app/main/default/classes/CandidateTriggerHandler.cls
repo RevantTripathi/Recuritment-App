@@ -20,9 +20,10 @@ public class CandidateTriggerHandler extends TriggerHandler {
                 interviewsToCreate.add(new Interview__c(Candidate__c = cand.Id));
             }
 
-            if(!interviewsToCreate.isEmpty()){
+            
+        }
+        if(!interviewsToCreate.isEmpty()){
                 insert interviewsToCreate;
-            }
         }
     }
 }
