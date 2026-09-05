@@ -7,7 +7,6 @@ public class CandidateTriggerHandler extends TriggerHandler {
     
     protected override void afterUpdate(List<SObject> newList, Map<Id,SObject> newMap, Map<Id,SObject> oldMap){
         List<Candidate__c> newCandidates = (List<Candidate__c>)newList;   // Cast generic SObject types back to Candidate_c
-        Map<Id, Candidate__c> newCandidateMap = (Map<Id, Candidate__c>)newMap;
         Map<Id, Candidate__c> oldCandidateMap = (Map<Id,Candidate__c>)oldMap;
         
         Set<Id> candidateMovingToInterview = new Set<Id>();
@@ -25,8 +24,7 @@ public class CandidateTriggerHandler extends TriggerHandler {
         for(AggregateResult ar:[Select Candidate__c candId, count(Id) total from Interview__c where Candidate__c in :candidateMovingToInterview group by Candidate__c ]){
             existingInterviewCountforEachCand.put((Id)ar.get('candId'),(Integer)ar.get('total'));
         }
-        
-        
+                
         List<Interview__c> interviewsToCreate = new List<Interview__c>();
         for(Id candId:candidateMovingToInterview ){
             
@@ -53,9 +51,7 @@ public class CandidateTriggerHandler extends TriggerHandler {
             Scheduled_Date__c = Date.today().addDays(7)
                 ));
         }
-        
-        
-        
+                
         if(!interviewsToCreate.isEmpty()){
             insert interviewsToCreate;
         }
