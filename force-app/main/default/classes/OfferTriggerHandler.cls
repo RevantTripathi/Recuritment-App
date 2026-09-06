@@ -23,7 +23,6 @@ public class OfferTriggerHandler extends TriggerHandler {
         for(ProcessInstanceStep step:[SELECT Id,ActorId,ProcessInstance.TargetObjectId from ProcessInstanceStep where StepStatus ='Approved' and ProcessInstance.TargetObjectId in :eligbleOffers]){
             
             approverIdByOfferId.put(step.ProcessInstance.TargetObjectId, step.ActorId);
-            
         }
         
         List<Offer__c> offersToUpdate = new List<Offer__c>();
