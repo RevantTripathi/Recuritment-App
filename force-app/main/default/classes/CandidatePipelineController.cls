@@ -1,5 +1,9 @@
 public with sharing class CandidatePipelineController {
-    public CandidatePipelineController() {
 
+    @AuraEnabled(cacheable=true)
+    public static List<Candidate__c> getCandidatesForPipeline() {
+        return CandidateService.getAllCandidatesForPipeline();
     }
+
+    
 }
