@@ -4,7 +4,7 @@ import getCandidatesForPipeline from '@salesforce/apex/CandidatePipelineControll
 
 
 export default class CandidatePipeline extends LightningElement {
-    @track groupCandidates = {};
+    @track groupCandidates = [];
 
     @wire(getCandidatesForPipeline)
     wireCandidates({error,data}){

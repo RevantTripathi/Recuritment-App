@@ -1,3 +1,15 @@
 <template>
-    
+    <div class="pipeline-container">
+        <template for:each={groupCandidates} for:item="column"> 
+            <div key={column.stageName} class="pipeline-column">
+                <h2>{column.stageName}</h2>
+                <template for:each={column.candidates} for:item="cand">
+                    <div key={cand.Id} class="candidate-card">
+                        <p>{cand.Name}</p>
+                        <p>{cand.Email__c}</p>
+                    </div>                
+                </template>
+            </div>
+        </template>
+    </div>        
 </template>
