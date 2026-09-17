@@ -1,0 +1,27 @@
+.pipeline-container{
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+       
+}
+
+.pipeline-column{
+    flex: 1;
+    background-color: #f4f6f9;
+    border-radius: 8px;
+    padding: 12px;
+    min-width: 200px;
+    border: black;
+}
+
+.pipeline-column h2 {
+    margin-bottom: 12px;
+}
+
+.candidate-card{
+    background-color: white;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,1);
+}
