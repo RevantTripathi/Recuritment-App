@@ -159,7 +159,7 @@
     <label>Candidate</label>
     <nameField>
         <displayFormat>CAND{0000}</displayFormat>
-        <label>Candidate Name</label>
+        <label>Candidate Number</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
