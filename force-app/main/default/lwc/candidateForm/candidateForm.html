@@ -1,5 +1,6 @@
 <template>
     <lightning-card title="Add new Candidate">
+        <div class="form-container">
         <template if:false={showFileUpload}>
             <lightning-input label="Full Name" value={fullName} onchange={handleFullNameChange}></lightning-input>
             <lightning-input label="Email" value={email} onchange={handleEmailChange}></lightning-input>
@@ -8,8 +9,9 @@
             <lightning-button label="Save Candidate" onclick={handleSaveCandidate} variant="brand"></lightning-button>
         </template>
         <template if:true={showFileUpload}>
-            <p>Candidate is Created Successfully! Upload the resume below.</p>
+            <p class="success-message">Candidate is Created Successfully! Upload the resume below.</p>
             <lightning-file-upload label="Upload Resume" record-id={candidateId} accept={acceptFormats} onuploadfinished = {handleUploadResume}></lightning-file-upload>
         </template>
+        </div>
     </lightning-card>
 </template>

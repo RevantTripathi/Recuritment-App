@@ -1,0 +1,16 @@
+.form-container { 
+    max-width: 500px; margin: 0 auto; padding: 24px; 
+} 
+
+lightning-input, lightning-combobox { 
+    display: block; margin-bottom: 16px; 
+
+}
+
+lightning-button { 
+    margin-top: 8px; 
+}
+
+.success-message { 
+    color: #2e844a; font-weight: 600; margin-bottom: 16px;
+} 
