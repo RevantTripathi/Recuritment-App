@@ -1,5 +1,13 @@
+.card-wrapper{
+    max-width: 100%;
+    margin: 1rem auto;
+    background-color: #f4f7f9;
+
+}
 .form-container { 
-    max-width: 500px; margin: 0 auto; padding: 24px; 
+    max-width: 500px; 
+    margin: 0 auto; 
+    padding: 24px; 
 } 
 
 lightning-input, lightning-combobox { 
