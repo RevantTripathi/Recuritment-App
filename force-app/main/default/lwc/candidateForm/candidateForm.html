@@ -4,12 +4,12 @@
             <lightning-input label="Full Name" value={fullName} onchange={handleFullNameChange}></lightning-input>
             <lightning-input label="Email" value={email} onchange={handleEmailChange}></lightning-input>
             <lightning-input label="Phone" value={phone} onchange={handlePhoneChange}></lightning-input>
-            <lightning-input label="Job Req Id" value={jobReqId} onchange={handleJobReqIdChange}></lightning-input>
+            <lightning-combobox label="Job Requisition" options={jobReqOptions} value={jobReqId} onchange={handleJobReqIdChange}> </lightning-combobox>
             <lightning-button label="Save Candidate" onclick={handleSaveCandidate} variant="brand"></lightning-button>
         </template>
         <template if:true={showFileUpload}>
             <p>Candidate is Created Successfully! Upload the resume below.</p>
-            <lightning-file-upload label="Upload Resume" record-id={candidateId} accept={acceptFormats}></lightning-file-upload>
+            <lightning-file-upload label="Upload Resume" record-id={candidateId} accept={acceptFormats} onuploadfinished = {handleUploadResume}></lightning-file-upload>
         </template>
     </lightning-card>
 </template>

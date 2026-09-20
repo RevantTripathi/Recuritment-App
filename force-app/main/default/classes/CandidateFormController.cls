@@ -8,7 +8,12 @@ public with sharing class CandidateFormController {
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
-
         
+        
+    }
+    
+    @AuraEnabled(cacheable = true)
+    public static List<Job_Requisition__c> getOpenJobRequisitions(){
+        return [Select Id, Title__c from Job_Requisition__c where Status__c = 'Open'];
     }
 }

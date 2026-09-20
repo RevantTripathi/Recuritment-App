@@ -1,6 +1,7 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, wire } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import createCandidate from '@salesforce/apex/CandidateFormController.createCandidate';
-
+import getOpenJobRequisitions from '@salesforce/apex/CandidateFormController.getOpenJobRequisitions';
 
 export default class CandidateForm extends LightningElement {
     @track fullName='';
@@ -9,8 +10,20 @@ export default class CandidateForm extends LightningElement {
     @track jobReqId='';
     @track candidateId='';
     @track showFileUpload = false;
+    @track jobReqOptions = []; 
 
     acceptedFormats = ['.pdf', '.doc', '.docx'];
+
+    @wire(getOpenJobRequisitions) 
+    wiredJobReqs({ data }) {
+        if(data){
+            this.jobReqOptions = data.map((req) => {
+                return {label:req.Title__c, value:req.Id};
+            });
+        }
+    }
+
+    
 
     handleFullNameChange(event) { 
         this.fullName = event.target.value; 
@@ -35,4 +48,23 @@ export default class CandidateForm extends LightningElement {
             console.error('Error creating candidate:', error); 
         }
     }
+
+    handleUploadResume(event){
+        const uploadFiles = event.detail.files;
+        this.dispatchEvent(new ShowToastEvent({
+            title:'Success', message: uploadFiles.length + 'file(s) uploaded successfully. Resume Parsing will begin shortly.', variant: 'success' 
+        }));
+        this.resetForm();
+
+    }
+
+    resetForm(){
+        this.fullName='';
+        this.email='';
+        this.phone='';
+        this.jobReqId='';
+        this.showFileUpload=false;
+    }
+
+    
 }
