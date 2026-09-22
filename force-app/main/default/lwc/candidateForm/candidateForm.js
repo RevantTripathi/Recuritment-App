@@ -18,7 +18,7 @@ export default class CandidateForm extends LightningElement {
     wiredJobReqs({ data }) {
         if(data){
             this.jobReqOptions = data.map((req) => {
-                return {label:req.Title__c, value:req.Id};
+                return {label:req.Name, value:req.Id};
             });
         }
     }

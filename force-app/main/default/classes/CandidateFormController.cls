@@ -14,6 +14,15 @@ public with sharing class CandidateFormController {
     
     @AuraEnabled(cacheable = true)
     public static List<Job_Requisition__c> getOpenJobRequisitions(){
-        return [Select Id, Title__c from Job_Requisition__c where Status__c = 'Open'];
+        List<Job_Requisition__c> results;
+        try{
+
+        results = [Select Id, Name from Job_Requisition__c where Status__c = 'Open' WITH SECURITY_ENFORCED];
+        return results;
+        }catch (Exception e){
+            AuraHandledException ex = new AuraHandledException(e.getMessage());
+            ex.setMessage(e.getMessage());
+            throw ex;
+        }
     }
 }
