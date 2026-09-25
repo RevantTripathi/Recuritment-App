@@ -14,7 +14,7 @@ export default class CandidateForm extends LightningElement {
 
     acceptedFormats = ['.pdf', '.doc', '.docx'];
 
-    @wire(getOpenJobRequisitions) 
+    @wire(getOpenJobRequisitions)
     wiredJobReqs({ data }) {
         if(data){
             this.jobReqOptions = data.map((req) => {

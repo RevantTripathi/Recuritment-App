@@ -3,11 +3,13 @@
     <lightning-card title="Add new Candidate">
         <div class="form-container">
         <template if:false={showFileUpload}>
+            
             <lightning-input label="Full Name" value={fullName} onchange={handleFullNameChange}></lightning-input>
             <lightning-input label="Email" value={email} onchange={handleEmailChange}></lightning-input>
             <lightning-input label="Phone" value={phone} onchange={handlePhoneChange}></lightning-input>
             <lightning-combobox label="Job Requisition" options={jobReqOptions} value={jobReqId} onchange={handleJobReqIdChange}> </lightning-combobox>
             <lightning-button label="Save Candidate" onclick={handleSaveCandidate} variant="brand"></lightning-button>
+
         </template>
         <template if:true={showFileUpload}>
             <p class="success-message">Candidate is Created Successfully! Upload the resume below.</p>
