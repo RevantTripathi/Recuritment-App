@@ -10,7 +10,7 @@ public with sharing class ResumeParseQueueable implements Queueable {
     public void execute(QueueableContext context) {
         
         
-        String mockResponseJson = '{"data":{"name":{"first":"Abhishek","last":"Kumar"},"totalYearOfExperince":3,"skills":[{"name":"Apex"},{"name":"LWC"},{"name":"Flows"}]}}';
+        String mockResponseJson = '{"data":{"name":{"first":"Abhishek","last":"Kumar"},"totalYearsExperience":3,"skills":[{"name":"Apex"},{"name":"LWC"},{"name":"Flows"}]}}';
         
         
         
@@ -25,7 +25,8 @@ public with sharing class ResumeParseQueueable implements Queueable {
         }
         
         String skillsJoined = String.join(skillNames, ', ');
-        Candidate__c candToUpdate = new Candidate__c( Id = candidateId, Parsed_Skills__c = skillsJoined, Parsed_JSON__c = mockResponseJson, Parse_Status__c = 'Success' );
+        Integer yearOfExp = parsed.data.totalYearsExperience;
+        Candidate__c candToUpdate = new Candidate__c( Id = candidateId, Parsed_Skills__c = skillsJoined, Parsed_JSON__c = mockResponseJson, Parse_Status__c = 'Success', Year_of_Experience__c = yearOfExp );
         
         update candToUpdate;
     }
