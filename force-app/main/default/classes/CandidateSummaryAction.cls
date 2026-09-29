@@ -62,7 +62,9 @@ public with sharing class CandidateSummaryAction {
                 out.fullName = matchedCandidate.Full_Name__c;
                 out.stage = matchedCandidate.Stage__c;
                 out.skills = matchedCandidate.Parsed_Skills__c;
-                out.yearOfExperience = matchedCandidate.Year_of_Experience__c.intValue();
+                if (matchedCandidate.Year_of_Experience__c != null) {
+                    out.yearOfExperience = matchedCandidate.Year_of_Experience__c.intValue();
+                }
                 
             }
             results.add(out);
