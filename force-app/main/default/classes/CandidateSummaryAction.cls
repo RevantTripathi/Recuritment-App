@@ -52,7 +52,7 @@ public with sharing class CandidateSummaryAction {
         
         
         List<Output> results = new List<Output>();
-        //it directly converts your list of Sobject to Map of Sobject,(in built of Apex because query already has the Id of each record of the SObject)
+        //it directly converts your list of Sobject to Map of Sobject,(in built of Apex because query already has the Id of each record of the SObject)(Id, CandidateDetials)
         Map<Id,Candidate__c> candidateMap = new Map<Id,Candidate__c>(candidateToSummarize);
         
         for(Input candId: inputs){
