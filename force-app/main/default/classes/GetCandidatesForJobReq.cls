@@ -1,5 +1,18 @@
 public with sharing class GetCandidatesForJobReq {
-    
+    /**
+ * GetCandidatesForJobReq
+ *
+ * Invocable Apex action used by the Agentforce "Recruitment Assistant" agent
+ * (candidate_review subagent) to fetch all candidates under a given Job Requisition.
+ *
+ * Design notes:
+ * - One Job Requisition Id can return MANY candidates, so the output list length
+ *   does not match the input list length (unlike CandidateSummaryAction's 1:1 pattern).
+ * - Bulk-safe: a single SOQL query handles all input Job Requisition Ids together,
+ *   then results are grouped back by Job Requisition using a Map<Id, List<Candidate__c>>.
+ * - Returns only Id and Name per candidate — just enough for the agent to display
+ *   names to the user and later pass the correct Id into CandidateSummaryAction.
+ */
     
     public class Input{
         @InvocableVariable(label='Job Req Id' description='Id of the Job Requisition' required=true)
