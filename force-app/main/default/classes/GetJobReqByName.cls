@@ -20,7 +20,7 @@
 public with sharing class GetJobReqByName {
 
     public class Input{
-        @InvocableVariable(label='Job req name' description='The auto-number Name of the Job Requisition, e.g. JR0001' required=true)
+        @InvocableVariable(label='Job req name' description='The auto-number Name of the Job Requisition, e.g. JR-0001' required=true)
         public String jobReqName;
     }
     
